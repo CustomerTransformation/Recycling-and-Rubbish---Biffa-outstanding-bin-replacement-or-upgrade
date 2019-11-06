@@ -2,8 +2,8 @@
   "processName": "Recycling and Rubbish - Biffa outstanding bin replacement or upgrade",
   "processDescription": "",
   "props": {
-    "id": "AF-Process-9b1b1dbf-874f-4f3e-a794-7c298a7478d1",
-    "category": "AF-Category-4088902d-f12b-4ed5-bc3f-a8b8e32ffe47",
+    "id": "AF-Process-5242c14f-038d-4474-8a11-44022e962c71",
+    "category": "AF-Category-56c721f0-f2fa-493c-a42a-d58a559d63c5",
     "tags": "",
     "viewGroup": null,
     "viewGroupToken": null,
@@ -12,7 +12,7 @@
     "showCaseReference": false,
     "isPublished": true,
     "isSubform": false,
-    "notes": false,
+    "notes": "added bin sizes as criteria for display",
     "initial_stage": "Stage 1",
     "initial_stage_id": "AF-Stage-2b9ebcba-6b1f-4c2b-9a44-48e33a97b79b",
     "serverSubmit": true
@@ -119,7 +119,7 @@
                 "Category": "RubbishRecycling",
                 "data_type": "integration-lookup",
                 "allow_offline": 0,
-                "Output_template": "{\"systemID\":\"58a4289eb93ee\",\"systemName\":\"RubbishAndRecycling\",\"query\":\"exec BiffaBinReplacementUpgrade\",\"results_page_columns_db\":\"\",\"secure_fields_db_database\":\"\",\"escapeTokens\":\"yes\"}",
+                "Output_template": "{\"systemID\":\"593a5fdb73ecb\",\"systemName\":\"RubbishAndRecycling\",\"query\":\"exec BiffaBinReplacementUpgrade\\n@BinSize = {binSize}\",\"results_page_columns_db\":\"\",\"secure_fields_db_database\":\"\",\"escapeTokens\":\"yes\"}",
                 "log_only_on_error": 0,
                 "error_notification": "{\"LIM_name\":\"LIM14\",\"recipients_to\":\"Daniela.Dutu@portsmouthcc.gov.uk\"}"
               }
@@ -147,12 +147,69 @@
               "name": "Section 1",
               "fields": [
                 {
+                  "type": "checkbox",
+                  "props": {
+                    "minimumChoices": "",
+                    "maximumChoices": "",
+                    "minimumChoicesMessage": "Please select at least _min_value_ choices",
+                    "maximumChoicesMessage": "Please select no more than _max_value_ choices",
+                    "label": "Bin size to list",
+                    "dataName": "binSize",
+                    "labelPosition": "alignLeft",
+                    "defaultType": "specific",
+                    "defaultValue": null,
+                    "defaultValueText": null,
+                    "listSource": "one-time-list",
+                    "helpText": "If no sizes selected then all will be listed",
+                    "readOnly": false,
+                    "allowOther": false,
+                    "summaryField": false,
+                    "lookup": null,
+                    "lookupCondition": null,
+                    "lookupButton": null,
+                    "preventRunningOnInitialisation": null,
+                    "noResultsMessage": null,
+                    "tokenName": null,
+                    "listOfValues": [
+                      {
+                        "label": "140 Litre",
+                        "value": "140 Litre"
+                      },
+                      {
+                        "label": "180 Litre",
+                        "value": "180 Litre"
+                      },
+                      {
+                        "label": "240 Litre",
+                        "value": "240 Litre"
+                      }
+                    ],
+                    "displayName": true,
+                    "outerClass": null,
+                    "labelClass": null,
+                    "inputClass": null,
+                    "width": null,
+                    "displayStyle": "horizontal",
+                    "styleAsButton": null,
+                    "hideWhenBlank": null,
+                    "hidden": null,
+                    "displayCondition": null,
+                    "selectCondition": null,
+                    "mandatoryCondition": null,
+                    "readonlyCondition": null,
+                    "mandatory": false,
+                    "mandatoryMessage": "This field is required"
+                  },
+                  "conditionInputs": [],
+                  "id": "AF-Field-a11e555f-ec86-432b-8ce1-c6242b9b8ca5"
+                },
+                {
                   "type": "subform",
                   "props": {
                     "label": "Biffa",
                     "dataName": "Biffa",
                     "labelPosition": "hideLabel",
-                    "formName": "SF_Biffa oustanding jobs fields",
+                    "formName": "SF_Biffa oustanding jobs - Bin replacement or upgrade",
                     "form": "AF-Form-e6ddde67-cc90-4243-bd38-aa490907146b",
                     "displayStyle": "summary",
                     "lookup": "5d494f77e3b82",
@@ -186,13 +243,13 @@
                     "maximumRepeatsMessage": "Too many entries",
                     "formId": "AF-Form-e6ddde67-cc90-4243-bd38-aa490907146b",
                     "subformDefinition": {
-                      "formName": "SF_Biffa oustanding jobs fields",
+                      "formName": "SF_Biffa oustanding jobs - Bin replacement or upgrade",
                       "formDescription": "",
                       "props": {
                         "id": "AF-Form-e6ddde67-cc90-4243-bd38-aa490907146b",
                         "category": "",
                         "saveSubmissionData": true,
-                        "usePHPIntregration": false,
+                        "usePHPIntegrations": true,
                         "serverSideLookupValidation": false,
                         "tags": "",
                         "navigateAwayWarning": "Are you sure you want to navigate away? All progress in this form will be lost.",
@@ -235,8 +292,8 @@
                           "from": "",
                           "disableSaveNotify": false
                         },
-                        "hideSaveUrl": false,
-                        "usePHPIntegrations": true
+                        "usePHPIntregration": false,
+                        "hideSaveUrl": false
                       },
                       "sections": [
                         {
